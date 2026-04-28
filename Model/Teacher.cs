@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace student_app.Model
 {
@@ -23,5 +24,8 @@ namespace student_app.Model
         public string? Subject { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+        [JsonIgnore]
+        public ICollection<Salary> Salaries { get; set; } = new List<Salary>();
     }
 }
