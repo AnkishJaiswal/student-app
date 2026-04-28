@@ -152,6 +152,7 @@ E:\project\student-app\obj\Debug\net9.0\student-app.AssemblyInfo.cs
 E:\project\student-app\obj\Debug\net9.0\student-app.csproj.CoreCompileInputs.cache
 E:\project\student-app\obj\Debug\net9.0\student-app.MvcApplicationPartsAssemblyInfo.cs
 E:\project\student-app\obj\Debug\net9.0\student-app.MvcApplicationPartsAssemblyInfo.cache
+E:\project\student-app\obj\Debug\net9.0\student-app.sourcelink.json
 E:\project\student-app\obj\Debug\net9.0\rjimswa.dswa.cache.json
 E:\project\student-app\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 E:\project\student-app\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
