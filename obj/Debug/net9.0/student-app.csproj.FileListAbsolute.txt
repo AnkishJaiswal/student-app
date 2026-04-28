@@ -166,3 +166,4 @@ E:\project\student-app\obj\Debug\net9.0\refint\student-app.dll
 E:\project\student-app\obj\Debug\net9.0\student-app.pdb
 E:\project\student-app\obj\Debug\net9.0\student-app.genruntimeconfig.cache
 E:\project\student-app\obj\Debug\net9.0\ref\student-app.dll
+e:\project\student-app\obj\Debug\net9.0\student-app.sourcelink.json
