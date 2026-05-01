@@ -1,7 +1,6 @@
 E:\project\student-app\bin\Debug\net9.0\appsettings.Development.json
 E:\project\student-app\bin\Debug\net9.0\appsettings.json
 E:\project\student-app\bin\Debug\net9.0\student-app.staticwebassets.endpoints.json
-E:\project\student-app\bin\Debug\net9.0\student-app.exe
 E:\project\student-app\bin\Debug\net9.0\student-app.deps.json
 E:\project\student-app\bin\Debug\net9.0\student-app.runtimeconfig.json
 E:\project\student-app\bin\Debug\net9.0\student-app.dll
@@ -167,3 +166,4 @@ E:\project\student-app\obj\Debug\net9.0\refint\student-app.dll
 E:\project\student-app\obj\Debug\net9.0\student-app.pdb
 E:\project\student-app\obj\Debug\net9.0\student-app.genruntimeconfig.cache
 E:\project\student-app\obj\Debug\net9.0\ref\student-app.dll
+e:\project\student-app\bin\Debug\net9.0\student-app.exe

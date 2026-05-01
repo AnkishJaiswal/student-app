@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi.Models;
 using student_app.Auth;
 using student_app.Data;
+using student_app.Logging;
 
 namespace student_app
 {
@@ -14,7 +15,15 @@ namespace student_app
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services
-            builder.Services.AddControllers();
+            builder.Services.Configure<ActionCallFileLoggingOptions>(
+                builder.Configuration.GetSection("FunctionCallLogging"));
+            builder.Services.AddSingleton<RollingTextFileLogger>();
+            builder.Services.AddScoped<ActionCallLoggingFilter>();
+
+            builder.Services.AddControllers(options =>
+            {
+                options.Filters.Add<ActionCallLoggingFilter>();
+            });
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(options =>
             {

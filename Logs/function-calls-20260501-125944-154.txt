@@ -1,0 +1,26 @@
+﻿[2026-05-01 12:59:11.628 +05:30] START SalariesController.GetAll | GET /api/Salaries/GetAll
+[2026-05-01 12:59:55.757 +05:30] END   SalariesController.GetAll | SUCCESS | Status: 200 | Duration: 31428 ms
+[2026-05-01 13:01:30.777 +05:30] START SalariesController.Get | GET /api/Salaries/GetSalary/1
+[2026-05-01 13:01:32.277 +05:30] END   SalariesController.Get | SUCCESS | Status: 200 | Duration: 1499 ms
+[2026-05-01 13:02:31.622 +05:30] START StudentsController.Create | POST /api/Students/Save
+[2026-05-01 13:02:34.402 +05:30] END   StudentsController.Create | SUCCESS | Status: 200 | Duration: 2779 ms
+[2026-05-01 13:30:05.487 +05:30] START StudentsController.Create | POST /api/Students/Save | Payload: {
+  "dto": {
+    "FirstName": "Khushi",
+    "LastName": "jaiswal",
+    "Email": "khushi@example.com",
+    "Age": 18,
+    "Grade": "A"
+  }
+}
+[2026-05-01 13:30:15.107 +05:30] END   StudentsController.Create | SUCCESS | Status: 200 | Duration: 9610 ms
+[2026-05-01 14:12:30.944 +05:30] START StudentsController.Create | POST /api/Students/Save | Payload: {
+  "dto": {
+    "FirstName": "Khushi1",
+    "LastName": "jaiswal",
+    "Email": "khushi1@example.com",
+    "Age": 18,
+    "Grade": "A"
+  }
+}
+[2026-05-01 14:12:36.117 +05:30] END   StudentsController.Create | SUCCESS | Status: 200 | Duration: 5173 ms
