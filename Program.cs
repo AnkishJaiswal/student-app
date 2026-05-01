@@ -1,5 +1,8 @@
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.OpenApi.Models;
+using student_app.Auth;
 using student_app.Data;
 
 namespace student_app
@@ -13,7 +16,46 @@ namespace student_app
             // Add services
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(options =>
+            {
+                options.AddSecurityDefinition(ApiKeyAuthenticationOptions.DefaultScheme, new OpenApiSecurityScheme
+                {
+                    Description = "Enter your API key. Example: dev-api-key-change-me",
+                    In = ParameterLocation.Header,
+                    Name = builder.Configuration["ApiKey:HeaderName"] ?? "X-API-Key",
+                    Type = SecuritySchemeType.ApiKey
+                });
+
+                options.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = ApiKeyAuthenticationOptions.DefaultScheme
+                            }
+                        },
+                        Array.Empty<string>()
+                    }
+                });
+            });
+            builder.Services
+                .AddAuthentication(ApiKeyAuthenticationOptions.DefaultScheme)
+                .AddScheme<ApiKeyAuthenticationOptions, ApiKeyAuthenticationHandler>(
+                    ApiKeyAuthenticationOptions.DefaultScheme,
+                    options =>
+                    {
+                        options.HeaderName = builder.Configuration["ApiKey:HeaderName"] ?? "X-API-Key";
+                        options.ApiKey = builder.Configuration["ApiKey:Key"];
+                    });
+            builder.Services.AddAuthorization(options =>
+            {
+                options.FallbackPolicy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+            });
 
             // Configure EF Core with SQL Server
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
@@ -58,6 +100,7 @@ namespace student_app
 
             app.UseCors();
             app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.MapControllers();
 
