@@ -96,7 +96,31 @@ namespace student_app
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-            
+
+            var securityHeadersSection = app.Configuration.GetSection("SecurityHeaders");
+            if (securityHeadersSection.GetValue("Enabled", true))
+            {
+                var securityHeaders = securityHeadersSection
+                    .GetSection("Headers")
+                    .GetChildren()
+                    .Where(header => !string.IsNullOrWhiteSpace(header.Key) && !string.IsNullOrWhiteSpace(header.Value))
+                    .ToArray();
+
+                app.Use(async (context, next) =>
+                {
+                    context.Response.OnStarting(() =>
+                    {
+                        foreach (var header in securityHeaders)
+                        {
+                            context.Response.Headers[header.Key] = header.Value;
+                        }
+
+                        return Task.CompletedTask;
+                    });
+
+                    await next();
+                });
+            }
 
             app.UseCors();
             app.UseHttpsRedirection();
